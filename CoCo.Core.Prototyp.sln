@@ -1,27 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Bootstrapping", "CoCo.Core.Bootstrapping\CoCo.Core.Bootstrapping.csproj", "{24E2B8AD-E27F-4956-A0CE-BEB64491F6A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Bootstrapping", "CoCo.Core.Bootstrapping\CoCo.Core.Bootstrapping.csproj", "{24E2B8AD-E27F-4956-A0CE-BEB64491F6A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Configuration", "CoCo.Core.Configuration\CoCo.Core.Configuration.csproj", "{90A4A0D9-22FD-48F8-B633-FBF093D2AC76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Configuration", "CoCo.Core.Configuration\CoCo.Core.Configuration.csproj", "{90A4A0D9-22FD-48F8-B633-FBF093D2AC76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Configuration.DatabaseSource", "CoCo.Core.Configuration.DatabaseSource\CoCo.Core.Configuration.DatabaseSource.csproj", "{8822ECB9-4C6C-4A6B-BCF8-C26D255262DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Configuration.DatabaseSource", "CoCo.Core.Configuration.DatabaseSource\CoCo.Core.Configuration.DatabaseSource.csproj", "{8822ECB9-4C6C-4A6B-BCF8-C26D255262DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Configuration.Tests", "CoCo.Core.Configuration.Tests\CoCo.Core.Configuration.Tests.csproj", "{E8A5D00A-330F-44E9-90A1-8C6C1B1DCDEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Contract", "CoCo.Core.Contract\CoCo.Core.Contract.csproj", "{1CCACA70-E8CD-434F-B84F-83348ECB30A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Contract", "CoCo.Core.Contract\CoCo.Core.Contract.csproj", "{1CCACA70-E8CD-434F-B84F-83348ECB30A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.EventBrokerage", "CoCo.Core.EventBrokerage\CoCo.Core.EventBrokerage.csproj", "{98F1CBEE-6118-44E3-BE73-A150DC505C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.EventBrokerage", "CoCo.Core.EventBrokerage\CoCo.Core.EventBrokerage.csproj", "{98F1CBEE-6118-44E3-BE73-A150DC505C64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.EventBrokerage.Tests", "CoCo.Core.EventBrokerage.Tests\CoCo.Core.EventBrokerage.Tests.csproj", "{CD35E234-5E90-46A7-B28D-27962506F411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.NinjectAdapter", "CoCo.Core.NinjectAdapter\CoCo.Core.NinjectAdapter.csproj", "{15C3C4EF-4C31-4547-95E4-9CB37714EE87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.NinjectAdapter", "CoCo.Core.NinjectAdapter\CoCo.Core.NinjectAdapter.csproj", "{15C3C4EF-4C31-4547-95E4-9CB37714EE87}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CrossCutting", "CrossCutting", "{4A1C1BD1-7AD6-4CC3-A0D4-51F1A79C7772}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{15501EF2-1513-4568-800C-7209D4542433}"
+	ProjectSection(SolutionItems) = preProject
+		Classifiation.md = Classifiation.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{492A1E90-29B2-43D9-91F7-A82FF4F912C6}"
 EndProject
@@ -37,33 +40,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4CE0B5DB-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registrations", "Registrations", "{4079B6A5-EF3F-470E-8D17-B80F7D013C10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mappings", "Mappings\Mappings.csproj", "{23E74E1A-37C2-4B36-871E-F1FDEC3AF9C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mappings", "Mappings\Mappings.csproj", "{23E74E1A-37C2-4B36-871E-F1FDEC3AF9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonManagement.Contract", "PersonManagement.Contract\PersonManagement.Contract.csproj", "{3D38CCA3-8D83-4F4C-9F20-C865B4C6468C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonManagement.Contract", "PersonManagement.Contract\PersonManagement.Contract.csproj", "{3D38CCA3-8D83-4F4C-9F20-C865B4C6468C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonManagement", "PersonManagement\PersonManagement.csproj", "{2C06A8D4-D9F0-4D97-9B5F-E545D070C27C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonManagement", "PersonManagement\PersonManagement.csproj", "{2C06A8D4-D9F0-4D97-9B5F-E545D070C27C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStoring", "DataStoring\DataStoring.csproj", "{A14F6AF9-84A4-49DB-A228-AE3EAA75EF78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStoring", "DataStoring\DataStoring.csproj", "{A14F6AF9-84A4-49DB-A228-AE3EAA75EF78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStoring.Contract", "DataStoring.Contract\DataStoring.Contract.csproj", "{F98FFD31-1236-44C0-944D-F9DB135CE6B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStoring.Contract", "DataStoring.Contract\DataStoring.Contract.csproj", "{F98FFD31-1236-44C0-944D-F9DB135CE6B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{12458A26-7CD9-463F-AE25-97A1A99F7E06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataClasses", "DataClasses\DataClasses.csproj", "{7AA16FEE-4322-4B58-A1E4-BF653168B647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataClasses", "DataClasses\DataClasses.csproj", "{7AA16FEE-4322-4B58-A1E4-BF653168B647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{E25E62E6-EA51-4A22-AC3A-D5E2BBC18038}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{E25E62E6-EA51-4A22-AC3A-D5E2BBC18038}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auditation", "Auditation\Auditation.csproj", "{007E5068-978A-48FF-90E2-CFAAF984C12A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditation", "Auditation\Auditation.csproj", "{007E5068-978A-48FF-90E2-CFAAF984C12A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auditation.Contract", "Auditation.Contract\Auditation.Contract.csproj", "{6273983E-F879-4503-859F-FE68362A44F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auditation.Contract", "Auditation.Contract\Auditation.Contract.csproj", "{6273983E-F879-4503-859F-FE68362A44F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuditationWorkflows", "AuditationWorkflows\AuditationWorkflows.csproj", "{81952039-2468-41AE-97B8-72DA5EF283B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuditationWorkflows", "AuditationWorkflows\AuditationWorkflows.csproj", "{81952039-2468-41AE-97B8-72DA5EF283B5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspWebClient", "AspWebClient\AspWebClient.csproj", "{39760AE7-94DB-4AEE-9D57-995B2C9AA2F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Owin", "CoCo.Core.Owin\CoCo.Core.Owin.csproj", "{CB61A8EF-C6D8-4494-959D-4D1EC8ED3E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Owin", "CoCo.Core.Owin\CoCo.Core.Owin.csproj", "{CB61A8EF-C6D8-4494-959D-4D1EC8ED3E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.Owin.Mvc", "CoCo.Core.Owin.Mvc\CoCo.Core.Owin.Mvc.csproj", "{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Owin.Mvc", "CoCo.Core.Owin.Mvc\CoCo.Core.Owin.Mvc.csproj", "{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.PrismAdapter", "..\Haushaltsbuch\Haushaltsbuch\CoCo.Core.PrismAdapter\CoCo.Core.PrismAdapter.csproj", "{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -155,6 +160,10 @@ Global
 		{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -186,6 +195,7 @@ Global
 		{39760AE7-94DB-4AEE-9D57-995B2C9AA2F3} = {A5A59603-1CF5-4107-B3FF-22C4EEBEF22B}
 		{CB61A8EF-C6D8-4494-959D-4D1EC8ED3E49} = {12458A26-7CD9-463F-AE25-97A1A99F7E06}
 		{88B873BA-800C-4ED9-A618-D54CA8FCB6E8} = {12458A26-7CD9-463F-AE25-97A1A99F7E06}
+		{25D1C18A-1F2C-481F-A6EC-E4F0B4A32F0B} = {12458A26-7CD9-463F-AE25-97A1A99F7E06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {447DFC90-A398-47DE-BF6D-380F5CA8C199}
