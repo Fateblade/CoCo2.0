@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Contracts;
-using System.Text;
-using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Bootstrapping;
-using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Configuration;
+﻿using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Bootstrapping;
 using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection;
 using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection.DataClasses;
 using Prism.Ioc;
+using System;
 
 namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 {
@@ -72,7 +68,7 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 
         public TContract Get<TContract>(params ConstructorParameter[] parameters)
         {
-            throw new NotImplementedException("Not available in prism configuration"); //overload kernel? constructor parameter type with type instead of name??
+            throw new NotImplementedException("Not available in prism configuration"); //Todo: overload kernel? constructor parameter type with type instead of name??
         }
 
         public object Get(Type contractType)
@@ -82,12 +78,12 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 
         public object Get(Type contractType, params ConstructorParameter[] parameters)
         {
-            throw new NotImplementedException("Not available in prism configuration"); //overload kernel? constructor parameter type with type instead of name??
+            throw new NotImplementedException("Not available in prism configuration"); //Todo: overload kernel? constructor parameter type with type instead of name??
         }
 
         public void RegisterConfiguration<T>()
         {
-            _containerRegistry.Register<T>(); //how to handle 
+            _containerRegistry.Register<T>(); //Todo: how to handle??
         }
     }
 }
