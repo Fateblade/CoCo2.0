@@ -33,5 +33,4 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
             _containerProvider = containerProvider;
         }
     }
-    }
 }

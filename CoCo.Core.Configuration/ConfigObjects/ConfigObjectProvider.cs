@@ -17,7 +17,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Configuration.C
 
         public ConfigObjectProvider(IConfigurator configurator)
         {
-            if (configurator == null) throw new ArgumentNullException(nameof(configurator));
+            if (configurator == null){ throw new ArgumentNullException(nameof(configurator)); }
 
             _configObjects = new ConcurrentDictionary<Type, object>();
             _configurator = configurator;
@@ -37,7 +37,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Configuration.C
 
         public object Get(Type configType)
         {
-            if (configType == null) throw new ArgumentNullException(nameof(configType));
+            if (configType == null) {throw new ArgumentNullException(nameof(configType));}
 
             ValidateType(configType);
 
