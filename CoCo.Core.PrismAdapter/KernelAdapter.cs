@@ -3,6 +3,8 @@ using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Dependency
 using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection.DataClasses;
 using Prism.Ioc;
 using System;
+using System.Collections.Generic;
+using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Configuration;
 
 namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 {
@@ -10,11 +12,13 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
     {
         private readonly IContainerRegistry _containerRegistry;
         private readonly IContainerProvider _containerProvider;
+        private readonly List<Type> _registeredConfigurations;
 
         public KernelAdapter(IContainerRegistry containerRegistry, IContainerProvider containerProvider)
         {
             _containerRegistry = containerRegistry;
             _containerProvider = containerProvider;
+            _registeredConfigurations = new List<Type>();
         }
 
         public void Register<TContract, TImplementation>(RegisterScope scope = RegisterScope.PerInject) where TImplementation : TContract
@@ -63,6 +67,11 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 
         public TContract Get<TContract>()
         {
+            if (_registeredConfigurations.Contains(typeof(TContract)))
+            {
+                return _containerProvider.Resolve<IConfigObjectProvider>().Get< TContract>();
+            }
+
             return _containerProvider.Resolve<TContract>();
         }
 
@@ -73,6 +82,11 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 
         public object Get(Type contractType)
         {
+            if (_registeredConfigurations.Contains(contractType))
+            {
+                return _containerProvider.Resolve<IConfigObjectProvider>().Get(contractType);
+            }
+
             return _containerProvider.Resolve(contractType);
         }
 
@@ -83,7 +97,9 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
 
         public void RegisterConfiguration<T>()
         {
-            _containerRegistry.Register<T>(); //Todo: how to handle??
+            _registeredConfigurations.Add(typeof(T));
         }
+
+        
     }
 }
