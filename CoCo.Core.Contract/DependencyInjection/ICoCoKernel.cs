@@ -11,6 +11,9 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Depend
 
         void Register(Type contract, Type implementation, RegisterScope scope = RegisterScope.PerInject);
 
+        void RegisterUnique<TContract, TImplementation>(TImplementation implementation)
+            where TImplementation : TContract;
+
         void RegisterToSelf<TImplementation>(RegisterScope scope = RegisterScope.PerInject);
 
         void RegisterComponent<TComponent>()
