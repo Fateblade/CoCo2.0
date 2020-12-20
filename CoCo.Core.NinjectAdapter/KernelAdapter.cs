@@ -32,6 +32,12 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.NinjectAdapter
             ApplyScope(registration, scope);
         }
 
+        public void RegisterUnique<TContract, TImplementation>(TImplementation implementation) where TImplementation : TContract
+        {
+            var registration = _innerKernel.Bind<TContract>().ToConstant(implementation);
+            ApplyScope(registration, RegisterScope.Unique);
+        }
+
         public void RegisterToSelf<TImplementation>(RegisterScope scope = RegisterScope.PerInject)
         {
             var registration = _innerKernel.Bind<TImplementation>().ToSelf();

@@ -10,4 +10,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)*.*&quot; &quot;D:\Github\Alexandria\_ExternalLibraries\&quot; /F /R /I /E /Y&#xD;&#xA;xcopy &quot;$(TargetDir)*.*&quot; &quot;D:\Github\testspace_dsa\_ExternalComponents&quot; /F /R /I /E /Y" />
+  </Target>
 </Project>
