@@ -1,12 +1,11 @@
 ﻿using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection;
-using Prism.Ioc;
+using Ninject;
 
-namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
+namespace Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter
 {
     public class KernelContainer : IKernelContainer
     {
-        private readonly IContainerProvider _containerProvider;
-        private readonly IContainerRegistry _containerRegistry;
+        private readonly IKernel _kernel;
         private static readonly object _lock = new object();
         private static ICoCoKernel _innerKernel;
 
@@ -16,10 +15,10 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
             {
                 lock (_lock)
                 {
-                    if (_innerKernel == null && _containerRegistry!=null && _containerProvider!=null)
+                    if (_innerKernel == null && _kernel != null )
                     {
-                        _innerKernel = new KernelAdapter(_containerRegistry, _containerProvider);
-                        _innerKernel.Register<ICoCoKernel, KernelAdapter>();
+                        _innerKernel = new KernelAdapter(_kernel);
+                        _innerKernel.RegisterUnique(typeof(ICoCoKernel), this);
                     }
 
                     return _innerKernel;
@@ -27,10 +26,17 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
             }
         }
 
-        public KernelContainer(IContainerRegistry containerRegistry, IContainerProvider containerProvider)
+        public KernelAdapter CastedKernel => Kernel as KernelAdapter;
+
+        public KernelContainer(IKernel kernel)
         {
-            _containerRegistry = containerRegistry;
-            _containerProvider = containerProvider;
+            _kernel = kernel;
+        }
+
+        public KernelContainer() 
+            : this(new StandardKernel())
+        {
+
         }
     }
 }

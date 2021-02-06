@@ -1,105 +1,175 @@
 ﻿using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Bootstrapping;
-using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection;
-using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection.DataClasses;
-using Prism.Ioc;
-using System;
-using System.Collections.Generic;
 using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Configuration;
+using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection.DataClasses;
+using Ninject;
+using Ninject.Parameters;
+using Ninject.Syntax;
+using Ninject.Web.Common;
+using System;
+using System.Linq;
+using Prism.Ioc;
 
-namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter
+namespace Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter
 {
-    internal class KernelAdapter : ICoCoKernel
+    public class KernelAdapter : DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.DependencyInjection.ICoCoKernel,
+        IContainerExtension<IKernel>
     {
-        private readonly IContainerRegistry _containerRegistry;
-        private readonly IContainerProvider _containerProvider;
-        private readonly List<Type> _registeredConfigurations;
+        private readonly IKernel _innerKernel;
 
-        public KernelAdapter(IContainerRegistry containerRegistry, IContainerProvider containerProvider)
+        public IKernel Instance => _innerKernel;
+        
+        public KernelAdapter(IKernel innerKernel)
         {
-            _containerRegistry = containerRegistry;
-            _containerProvider = containerProvider;
-            _registeredConfigurations = new List<Type>();
+            _innerKernel = innerKernel;
         }
 
-        public void Register<TContract, TImplementation>(RegisterScope scope = RegisterScope.PerInject) where TImplementation : TContract
+        public void Register<TContract, TImplementation>(RegisterScope scope = RegisterScope.PerInject)
+            where TImplementation : TContract
         {
-            if (scope == RegisterScope.PerContext
-                || scope == RegisterScope.PerInject)
-            {
-                _containerRegistry.Register<TContract, TImplementation>();
-            }
-            else if(scope == RegisterScope.Unique)
-            {
-                _containerRegistry.RegisterSingleton<TContract, TImplementation>();
-            }
+            var registration = _innerKernel.Bind<TContract>().To<TImplementation>();
+            ApplyScope(registration, scope);
         }
 
         public void Register(Type contract, Type implementation, RegisterScope scope = RegisterScope.PerInject)
         {
-            if (scope == RegisterScope.PerContext
-                || scope == RegisterScope.PerInject)
-            {
-                _containerRegistry.Register(contract, implementation);
-            }
-            else if (scope == RegisterScope.Unique)
-            {
-                _containerRegistry.RegisterSingleton(contract, implementation);
-            }
+            var registration = _innerKernel.Bind(contract).To(implementation);
+            ApplyScope(registration, scope);
+        }
+
+        public void RegisterUnique<TContract, TImplementation>(TImplementation implementation) where TImplementation : TContract
+        {
+            var registration = _innerKernel.Bind<TContract>().ToConstant(implementation);
+            ApplyScope(registration, RegisterScope.Unique);
+        }
+
+        public void RegisterUnique(Type type, object implementation)
+        {
+            var registration = _innerKernel.Bind(type).ToConstant(implementation);
+            ApplyScope(registration, RegisterScope.Unique);
         }
 
         public void RegisterToSelf<TImplementation>(RegisterScope scope = RegisterScope.PerInject)
         {
-            if (scope == RegisterScope.PerContext
-                || scope == RegisterScope.PerInject)
-            {
-                _containerRegistry.Register<TImplementation>();
-            }
-            else if (scope == RegisterScope.Unique)
-            {
-                _containerRegistry.RegisterSingleton<TImplementation>();
-            }
+            var registration = _innerKernel.Bind<TImplementation>().ToSelf();
+            ApplyScope(registration, scope);
         }
 
         public void RegisterComponent<TComponent>() where TComponent : IComponentActivator
         {
-            _containerRegistry.Register<IComponentActivator, TComponent>();
+            _innerKernel.Bind<IComponentActivator>().To<TComponent>();
         }
 
-        public TContract Get<TContract>()
-        {
-            if (_registeredConfigurations.Contains(typeof(TContract)))
-            {
-                return _containerProvider.Resolve<IConfigObjectProvider>().Get< TContract>();
-            }
-
-            return _containerProvider.Resolve<TContract>();
-        }
+        public TContract Get<TContract>() => _innerKernel.Get<TContract>();
 
         public TContract Get<TContract>(params ConstructorParameter[] parameters)
         {
-            throw new NotImplementedException("Not available in prism configuration"); //Todo: overload kernel? constructor parameter type with type instead of name??
+            var ninjectParameters = parameters.Select(p => new ConstructorArgument(p.Name, p.Value));
+            var implementation = _innerKernel.Get<TContract>(ninjectParameters.ToArray());
+            return implementation;
         }
 
         public object Get(Type contractType)
         {
-            if (_registeredConfigurations.Contains(contractType))
-            {
-                return _containerProvider.Resolve<IConfigObjectProvider>().Get(contractType);
-            }
-
-            return _containerProvider.Resolve(contractType);
+            var implementation = _innerKernel.Get(contractType);
+            return implementation;
         }
 
         public object Get(Type contractType, params ConstructorParameter[] parameters)
         {
-            throw new NotImplementedException("Not available in prism configuration"); //Todo: overload kernel? constructor parameter type with type instead of name??
+            var ninjectParameters = parameters.Select(p => new ConstructorArgument(p.Name, p.Value));
+            var implementation = _innerKernel.Get(contractType, ninjectParameters.ToArray());
+            return implementation;
         }
 
         public void RegisterConfiguration<T>()
         {
-            _registeredConfigurations.Add(typeof(T));
+            _innerKernel.Bind<T>().ToMethod(c => c.Kernel.Get<IConfigObjectProvider>().Get<T>());
         }
 
-        
+        private void ApplyScope<T>(IBindingWhenInNamedWithOrOnSyntax<T> registration, RegisterScope scope)
+        {
+            switch (scope)
+            {
+                case RegisterScope.PerInject:
+                    registration.InTransientScope();
+                    break;
+                case RegisterScope.PerContext:
+                    registration.InRequestScope();
+                    break;
+                case RegisterScope.Unique:
+                    registration.InSingletonScope();
+                    break;
+            }
+        }
+
+        public object Resolve(Type type)
+        {
+            return Instance.Get(type);
+        }
+
+        public object Resolve(Type type, params (Type Type, object Instance)[] parameters)
+        {
+            var overrides = parameters.Select(p => new TypeMatchingConstructorArgument(p.Type, (c, t) => p.Instance)).ToArray();
+            return Instance.Get(type, overrides);
+        }
+
+        public object Resolve(Type type, string name)
+        {
+            return Instance.Get(type, name);
+        }
+
+        public object Resolve(Type type, string name, params (Type Type, object Instance)[] parameters)
+        {
+            var overrides = parameters.Select(p => new TypeMatchingConstructorArgument(p.Type, (c, t) => p.Instance)).ToArray();
+            return Instance.Get(type, name, overrides);
+        }
+
+        public IContainerRegistry RegisterInstance(Type type, object instance)
+        {
+            Instance.Bind(type).ToConstant(instance);
+            return this;
+        }
+
+        public IContainerRegistry RegisterInstance(Type type, object instance, string name)
+        {
+            Instance.Bind(type).ToConstant(instance).Named(name);
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type from, Type to)
+        {
+            Instance.Bind(from).To(to).InSingletonScope();
+            return this;
+        }
+
+        public IContainerRegistry RegisterSingleton(Type from, Type to, string name)
+        {
+            Instance.Bind(from).To(to).InSingletonScope().Named(name);
+            return this;
+        }
+
+        public IContainerRegistry Register(Type from, Type to)
+        {
+            Instance.Bind(from).To(to).InTransientScope();
+            return this;
+        }
+
+        public IContainerRegistry Register(Type from, Type to, string name)
+        {
+            Instance.Bind(from).To(to).InTransientScope().Named(name);
+            return this;
+        }
+
+        public bool IsRegistered(Type type)
+        {
+            return Instance.GetBindings(type).Any();
+        }
+
+        public bool IsRegistered(Type type, string name)
+        {
+            return Instance.GetBindings(type).Any(t=>t.Metadata.Name==name);
+        }
+
+        public void FinalizeExtension() { }
     }
 }

@@ -65,7 +65,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Owin", "CoCo.Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.Owin.Mvc", "CoCo.Core.Owin.Mvc\CoCo.Core.Owin.Mvc.csproj", "{88B873BA-800C-4ED9-A618-D54CA8FCB6E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoCo.Core.PrismAdapter", "CoCo.Core.PrismAdapter\CoCo.Core.PrismAdapter.csproj", "{8004A70F-0686-4955-896B-A0620DCFE689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoCo.Core.NinjectPrismAdapter", "CoCo.Core.PrismAdapter\CoCo.Core.NinjectPrismAdapter.csproj", "{8004A70F-0686-4955-896B-A0620DCFE689}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,10 +1,10 @@
-﻿using Castle.Core.Internal;
+﻿using System;
+using System.Linq;
+using Castle.Core.Internal;
 using Castle.DynamicProxy;
 using DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Aspects;
-using System;
-using System.Linq;
 
-namespace Fateblade.PersonManagementApp.CoCo.Core.PrismAdapter.ExceptionMappingInterception
+namespace Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter.ExceptionMappingInterception
 {
     public class ExceptionMapInterception : IInterceptor
     {
