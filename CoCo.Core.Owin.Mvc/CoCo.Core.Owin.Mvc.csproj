@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <AssemblyName>CoCo.Core.Owin.Mvc</AssemblyName>
 	<RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Owin.Mvc</RootNamespace>
   </PropertyGroup>

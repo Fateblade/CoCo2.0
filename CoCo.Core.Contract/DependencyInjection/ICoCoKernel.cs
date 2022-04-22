@@ -28,5 +28,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Contract.Depend
         object Get(Type contractType, params ConstructorParameter[] parameters);
 
         void RegisterConfiguration<T>();
+
+        void Unbind<TContract>();
     }
 }

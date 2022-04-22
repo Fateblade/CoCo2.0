@@ -86,6 +86,11 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter
             _innerKernel.Bind<T>().ToMethod(c => c.Kernel.Get<IConfigObjectProvider>().Get<T>());
         }
 
+        public void Unbind<TContract>()
+        {
+            _innerKernel.Unbind<TContract>();
+        }
+
         private void ApplyScope<T>(IBindingWhenInNamedWithOrOnSyntax<T> registration, RegisterScope scope)
         {
             switch (scope)
