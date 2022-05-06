@@ -6,8 +6,4 @@
     <AssemblyName>Logic.PersonManagement.Contract</AssemblyName>
     <RootNamespace>DavidTielke.PersonManagementApp.Logic.PersonManagement.Contract</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DataClasses\DataClasses.csproj" />
-  </ItemGroup>
 </Project>

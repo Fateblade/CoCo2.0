@@ -6,13 +6,4 @@
     <AssemblyName>Mappings</AssemblyName>
     <RootNamespace>DavidTielke.PersonManagementApp.Mappings</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AuditationWorkflows\AuditationWorkflows.csproj" />
-    <ProjectReference Include="..\Auditation\Auditation.csproj" />
-    <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj" />
-    <ProjectReference Include="..\DataStoring\DataStoring.csproj" />
-    <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj" />
-    <ProjectReference Include="..\PersonManagement\PersonManagement.csproj" />
-  </ItemGroup>
 </Project>

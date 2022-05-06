@@ -20,7 +20,6 @@
     <ProjectReference Include="..\CoCo.Core.Configuration\CoCo.Core.Configuration.csproj" />
     <ProjectReference Include="..\CoCo.Core.EventBrokerage\CoCo.Core.EventBrokerage.csproj" />
     <ProjectReference Include="..\CoCo.Core.NinjectAdapter\CoCo.Core.NinjectAdapter.csproj" />
-    <ProjectReference Include="..\Mappings\Mappings.csproj" />
   </ItemGroup>
 
   <ItemGroup>

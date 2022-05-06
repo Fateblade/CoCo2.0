@@ -6,8 +6,4 @@
     <AssemblyName>Data.DataStoring.Contract</AssemblyName>
     <RootNamespace>DavidTielke.PersonManagementApp.Data.DataStoring.Contract</RootNamespace>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DataClasses\DataClasses.csproj" />
-  </ItemGroup>
 </Project>

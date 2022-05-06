@@ -10,7 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Auditation.Contract\Auditation.Contract.csproj" />
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
-    <ProjectReference Include="..\DataStoring.Contract\DataStoring.Contract.csproj" />
     <ProjectReference Include="..\PersonManagement.Contract\PersonManagement.Contract.csproj" />
   </ItemGroup>
 </Project>
