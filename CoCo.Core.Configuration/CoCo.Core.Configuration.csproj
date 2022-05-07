@@ -5,7 +5,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>CoCo.Core.Configuration</AssemblyName>
 	<RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Configuration</RootNamespace>
-  	  <!--<OutputPath>$(LocalDllDir)</OutputPath>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +14,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<CallTarget Targets="CopyProjectToDll" />
+	</Target>
 
 </Project>
 

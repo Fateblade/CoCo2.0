@@ -4,7 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter</RootNamespace>
     <AssemblyName>CoCo.Core.NinjectPrismAdapter</AssemblyName>
-	  <OutputPath>$(LocalDllDir)</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.4.0" />
@@ -17,5 +16,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<CallTarget Targets="CopyProjectToDll" />
+	</Target>
 
 </Project>
