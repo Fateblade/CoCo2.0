@@ -6,7 +6,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>CoCo.Core.NinjectAdapter</AssemblyName>
     <RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.NinjectAdapter</RootNamespace>
-	  <OutputPath>$(LocalDllDir)</OutputPath>
+	  <!--<OutputPath>$(LocalDllDir)</OutputPath>-->
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +20,8 @@
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+  <Target Name="PostBuild" BeforeTargets="PostBuildEvent">
+	  <CallTarget Targets="CopyProjectToDll" />
   </Target>
+
 </Project>

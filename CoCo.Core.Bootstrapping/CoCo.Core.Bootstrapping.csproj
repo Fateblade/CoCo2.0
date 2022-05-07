@@ -5,7 +5,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>CoCo.Core.Bootstrapping</AssemblyName>
 	<RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Bootstrapping</RootNamespace>
-	  <OutputPath>$(LocalDllDir)</OutputPath>
+	  <!--<OutputPath>$(LocalDllDir)</OutputPath>-->
   </PropertyGroup>
 
   <ItemGroup>

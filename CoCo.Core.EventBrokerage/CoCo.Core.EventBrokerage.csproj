@@ -5,7 +5,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>CoCo.Core.EventBrokerage</AssemblyName>
     <RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.EventBrokerage</RootNamespace>
-  	  <OutputPath>$(LocalDllDir)</OutputPath>
+  	  <!--<OutputPath>$(LocalDllDir)</OutputPath>-->
   </PropertyGroup>
 
   <ItemGroup>
