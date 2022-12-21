@@ -14,7 +14,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.NinjectAdapter
     {
         private readonly IKernel _innerKernel;
 
-        public KernelAdapter(IKernel innerKernel)s
+        public KernelAdapter(IKernel innerKernel)
         {
             _innerKernel = innerKernel;
         }
