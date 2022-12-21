@@ -113,20 +113,26 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.EventBrokerage
             }
 
             var messageType = message.GetType();
-            var isSomeoneInterested = _messageSubscriptions.ContainsKey(messageType) && _messageSubscriptions[messageType].Count > 0;
-            if (!isSomeoneInterested)
+
+            while (messageType != typeof(object))
             {
-                //_logger.DebugAsync("Try to raise msg, but no one interessted", false, message).Wait();
-                return;
-            }
+                var isSomeoneInterested = _messageSubscriptions.ContainsKey(messageType) && _messageSubscriptions[messageType].Count > 0;
+                if (!isSomeoneInterested)
+                {
+                    //_logger.DebugAsync("Try to raise msg, but no one interessted", false, message).Wait();
+                    return;
+                }
 
-            var subscriptions = _messageSubscriptions[messageType];
+                var subscriptions = _messageSubscriptions[messageType];
 
-            EnsureResolveCallbackIsSetIfNeeded(subscriptions);
+                EnsureResolveCallbackIsSetIfNeeded(subscriptions);
 
-            foreach (var subscription in subscriptions)
-            {
-                RaiseForSubscription(message, subscription);
+                foreach (var subscription in subscriptions)
+                {
+                    RaiseForSubscription(message, subscription);
+                }
+
+                messageType = messageType.BaseType;
             }
         }
 
