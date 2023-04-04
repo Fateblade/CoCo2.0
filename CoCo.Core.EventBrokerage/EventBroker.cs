@@ -123,7 +123,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.EventBrokerage
                     return;
                 }
 
-                var subscriptions = _messageSubscriptions[messageType];
+                var subscriptions = _messageSubscriptions[messageType].ToArray(); //to array to allow adding subscriptions as a result of a raised subscription
 
                 EnsureResolveCallbackIsSetIfNeeded(subscriptions);
 
@@ -136,7 +136,7 @@ namespace DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.EventBrokerage
             }
         }
 
-        private void EnsureResolveCallbackIsSetIfNeeded(List<Subscription> subscriptions)
+        private void EnsureResolveCallbackIsSetIfNeeded(Subscription[] subscriptions)
         {
             var hasAnyActivationSubscription = subscriptions.Any(s => s.HandlerType != null);
             var hasResolveCallbackSet = _resolverCallback != null;
