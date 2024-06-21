@@ -33,7 +33,8 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.DryIocPrismAdapter
         public void RegisterUnique<TContract, TImplementation>(TImplementation implementation)
             where TImplementation : TContract
         {
-            _innerContainer.RegisterSingleton<TContract, TImplementation>();
+            
+            _innerContainer.Instance.RegisterInstance<TContract>(implementation);
         }
 
         public void RegisterUnique(Type type, object implementation)
@@ -63,8 +64,11 @@ namespace Fateblade.PersonManagementApp.CoCo.Core.DryIocPrismAdapter
 
 
         public void RegisterConfiguration<T>()
-            => _innerContainer.Instance.RegisterInitializer<T>((_, resolverContext) =>
-                resolverContext.Resolve<IConfigObjectProvider>().Get<T>());
+        {
+            _innerContainer.RegisterScoped(typeof(T), (resolverContext) => resolverContext.Resolve<IConfigObjectProvider>().Get<T>());
+        }
+
+
         //Probably(?) equivalent to: _innerKernel.Bind<T>().ToMethod(c => c.Kernel.Get<IConfigObjectProvider>().Get<T>());
 
         public void Unbind<TContract>()
