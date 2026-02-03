@@ -1,20 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="..\..\_Build\FatebladeProjectDefaultsImport.msb.xml" />
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>CoCo.Core.Bootstrapping</AssemblyName>
-	<RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Bootstrapping</RootNamespace>
 
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
+    <AssemblyName>CoCo.Core.Bootstrapping</AssemblyName>
+    <RootNamespace>DavidTielke.PersonManagementApp.CrossCutting.CoCo.Core.Bootstrapping</RootNamespace>
+
+    <!-- NuGet Package Metadata -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Fateblade.CoCo.Core.Bootstrapping</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Fateblade</Authors>
+    <Company>Fateblade</Company>
+    <Product>CoCo Framework</Product>
+    <Description>Component Orchestration Core - Bootstrapping and component lifecycle management</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
-
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<CallTarget Targets="CopyProjectToDll" />
-	</Target>
 
 </Project>
 

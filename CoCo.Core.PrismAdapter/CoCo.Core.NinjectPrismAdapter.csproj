@@ -1,10 +1,23 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-	<Import Project="..\..\_Build\FatebladeProjectDefaultsImport.msb.xml" />
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <RootNamespace>Fateblade.PersonManagementApp.CoCo.Core.NinjectPrismAdapter</RootNamespace>
     <AssemblyName>CoCo.Core.NinjectPrismAdapter</AssemblyName>
+
+    <!-- NuGet Package Metadata -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Fateblade.CoCo.Core.NinjectPrismAdapter</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Fateblade</Authors>
+    <Company>Fateblade</Company>
+    <Product>CoCo Framework</Product>
+    <Description>Component Orchestration Core - Ninject + Prism DI container adapter for WPF applications</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.4.0" />
     <PackageReference Include="Ninject" Version="3.3.4" />
@@ -16,9 +29,5 @@
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
-
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<CallTarget Targets="CopyProjectToDll" />
-	</Target>
 
 </Project>
