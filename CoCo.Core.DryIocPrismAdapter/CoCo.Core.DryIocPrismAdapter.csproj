@@ -1,12 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\_Build\FatebladeProjectDefaultsImport.msb.xml" />
 
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
+    <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
     <RootNamespace>Fateblade.PersonManagementApp.CoCo.Core.DryIocPrismAdapter</RootNamespace>
     <AssemblyName>CoCo.Core.DryIocPrismAdapter</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Fateblade.CoCo.Core.DryIocPrismAdapter</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Fateblade</Authors>
+    <Company>Fateblade</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,9 +23,5 @@
   <ItemGroup>
     <ProjectReference Include="..\CoCo.Core.Contract\CoCo.Core.Contract.csproj" />
   </ItemGroup>
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <CallTarget Targets="CopyProjectToDll" />
-  </Target>
 
 </Project>
