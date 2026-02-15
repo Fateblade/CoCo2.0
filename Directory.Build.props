@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <VersionSuffix Condition="'$(VersionSuffix)' == '' and '$(ContinuousIntegrationBuild)' != 'true'">test</VersionSuffix>
+  </PropertyGroup>
+</Project>

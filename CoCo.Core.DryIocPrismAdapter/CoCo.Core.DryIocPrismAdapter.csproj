@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
@@ -8,9 +8,9 @@
     <UseWPF>true</UseWPF>
     <RootNamespace>Fateblade.PersonManagementApp.CoCo.Core.DryIocPrismAdapter</RootNamespace>
     <AssemblyName>CoCo.Core.DryIocPrismAdapter</AssemblyName>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <PackageId>Fateblade.CoCo.Core.DryIocPrismAdapter</PackageId>
-    <Version>1.0.0</Version>
+    <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Fateblade</Authors>
     <Company>Fateblade</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

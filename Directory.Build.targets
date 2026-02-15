@@ -1,0 +1,7 @@
+<Project>
+  <Target Name="PushNuGetPackage" AfterTargets="GenerateNuspec"
+          Condition="'$(Configuration)' == 'Release' and '$(IsPackable)' != 'false' and '$(GeneratePackageOnBuild)' == 'true'">
+    <Exec Command="dotnet nuget push &quot;$(PackageOutputPath)$(PackageId).$(PackageVersion).nupkg&quot; --source github --skip-duplicate"
+          IgnoreExitCode="true" />
+  </Target>
+</Project>
